@@ -8,7 +8,7 @@ import {
 enum AnimalStatusEnum {
   available = 'available',
   adopted = 'adopted',
-  removed = 'removed',
+  removed = 'removed'
 }
 
 type FindAllAvailableNotFromUserParams = {
