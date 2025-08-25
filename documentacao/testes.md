@@ -89,3 +89,49 @@ npx cypress open
 ```
 
 3. Isso abrirá a interface do Cypress e você pode rodar os testes por lá.
+
+---
+
+# O que os testes cobrem
+
+## 1. Teste: "deve permitir o cadastro de um novo usuário com dados válidos"
+
+Esse é o teste em que dá tudo certo no momento de cadastro do usuário.
+
+### O que ele cobre:
+
+Verifica se o usuário consegue preencher todos os campos do formulário de cadastro corretamente.
+
+Confirma que o usuário é redirecionado para a página de login depois de cadastrar.
+
+Garante que uma mensagem de sucesso específica seja exibida pro usuário por um alerta do navegador.
+
+Basicamente esse teste valida que a funcionalidade de cadastro funciona do início ao fim no cenário perfeito
+
+## 2. Teste: "deve exibir uma mensagem de erro ao tentar cadastrar um email que já existe"
+
+Esse é um teste de integração entre frontend e backend. Ele verifica como o frontend reage a um erro de regra de negócio enviado pelo backend.
+
+### O que ele cobre:
+
+Usa o cy.intercept() para simular a resposta do servidor, fingindo que o e-mail já existe (erro 409) sem precisar ter um usuário real cadastrado mesmo.
+
+Confirma que nesse erro a aplicação exibe a mensagem correta ("Email já cadastrado.") em um alerta.
+
+Valida que o frontend está tratando e exibindo direito os erros vindos do backend.
+
+Ou seja, esse teste garante que o usuário receba um feedback se tentar se cadastrar com um e-mail já cadastrado.
+
+## 3. Teste: "deve exibir uma mensagem de erro de validação se o email não for preenchido"
+
+Esse é um teste de validação do frontend. Ele foca nas regras de validação antes de ir pro backend.
+
+### O que ele cobre:
+
+Simula a tentativa de enviar o formulário sem preencher o campo obrigatório de email.
+
+Garante que não vai enviar e que o usuário permanece na página de cadastro.
+
+Verifica se a mensagem de erro visual aparece na tela.
+
+Resumindo, esse teste confirma a verificação funciona e evita o envio de dados incompletos.
