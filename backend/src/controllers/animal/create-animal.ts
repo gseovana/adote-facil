@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes' // Adicionado
 import {
   CreateAnimalService,
   createAnimalServiceInstance,
@@ -25,13 +26,17 @@ class CreateAnimalController {
         pictures: pictureBuffers,
       })
 
-      const statusCode = result.isFailure() ? 400 : 201
+      const statusCode = result.isFailure()
+        ? StatusCodes.BAD_REQUEST // Modificado
+        : StatusCodes.CREATED // Modificado
 
       return response.status(statusCode).json(result.value)
     } catch (err) {
       const error = err as Error
       console.error('Error creating animal:', error)
-      return response.status(500).json({ error: error.message })
+      return response
+        .status(StatusCodes.INTERNAL_SERVER_ERROR) // Modificado
+        .json({ error: error.message })
     }
   }
 }
