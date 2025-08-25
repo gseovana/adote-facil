@@ -55,7 +55,7 @@ export class CreateUserService {
 
 ### 1.3 Repository 
 
-Padrão que atua como uma camada de abstração, separando a lògica de negócio do acesso e persistência dos dados. A camada de repositorie utiliza o ORM Prisma, que realiza de fato a persistência dos dados no banco.
+Padrão que atua como uma camada de abstração, separando a lógica de negócio do acesso e persistência dos dados. A camada de repositorie utiliza o ORM Prisma, que realiza de fato a persistência dos dados no banco.
 
 ```
 export class UserRepository {
